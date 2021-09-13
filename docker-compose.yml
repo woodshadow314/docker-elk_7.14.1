@@ -1,6 +1,7 @@
 version: '3.2'
 
 services:
+
   elasticsearch:
     build:
       context: elasticsearch/
@@ -68,6 +69,24 @@ services:
       - elk
     depends_on:
       - elasticsearch
+
+  nginx:
+    build:
+      context: nginx/
+      args:
+        NGINX_VERSION: $NGINX_VERSION
+    volumes:
+      - type: bind
+        source: ./nginx/sites-enabled/kibana.conf
+        target: /etc/nginx/sites-enabled/kibana.conf
+        read_only: true
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - elk
+    depends_on:
+      - kibana
 
 networks:
   elk:
