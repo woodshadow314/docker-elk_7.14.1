@@ -77,8 +77,8 @@ services:
         NGINX_VERSION: $NGINX_VERSION
     volumes:
       - type: bind
-        source: ./nginx/sites-enabled/kibana.conf
-        target: /etc/nginx/sites-enabled/kibana.conf
+        source: ./nginx/conf.d/kibana.conf
+        target: /etc/nginx/conf.d/kibana.conf
         read_only: true
     ports:
       - "80:80"
