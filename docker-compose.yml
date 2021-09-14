@@ -26,6 +26,7 @@ services:
       discovery.type: single-node
     networks:
       - elk
+    restart: "always"
 
   logstash:
     build:
@@ -60,6 +61,7 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    restart: "always"
 
   kibana:
     build:
@@ -77,6 +79,7 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    restart: "always"
 
   nginx:
     build:
@@ -95,6 +98,7 @@ services:
       - elk
     depends_on:
       - kibana
+    restart: "always"
 
 networks:
   elk:
