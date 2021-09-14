@@ -15,9 +15,9 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
+    # ports:
+    #   - "9200:9200"
+    #   - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx512m -Xms512m"
       #ELASTIC_PASSWORD: changeme
@@ -52,9 +52,9 @@ services:
         read_only: true
     ports:
       - "5044:5044"
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
-      - "9600:9600"
+      # - "5000:5000/tcp"
+      # - "5000:5000/udp"
+      # - "9600:9600"
     environment:
       LS_JAVA_OPTS: "-Xmx512m -Xms512m"
     networks:
