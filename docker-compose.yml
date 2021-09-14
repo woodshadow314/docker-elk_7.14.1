@@ -41,6 +41,14 @@ services:
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
+      - type: bind
+        source: /etc/pki/tls/certs/logstash-ad.crt
+        target: /etc/pki/tls/certs/logstash-ad.crt
+        read_only: true
+      - type: bind
+        source: /etc/pki/tls/private/logstash-ad.key
+        target: /etc/pki/tls/private/logstash-ad.key
+        read_only: true
     ports:
       - "5044:5044"
       - "5000:5000/tcp"
@@ -82,7 +90,6 @@ services:
         read_only: true
     ports:
       - "80:80"
-      - "8080:8080"
       - "443:443"
     networks:
       - elk
